@@ -8,16 +8,19 @@
  * @format
  */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {Navbar} from './src/Navbar';
 import {ScrollView} from 'react-native';
 import {InputBlock} from './src/InputBlock';
+import {Tasks, TaskType} from './src/Tasks';
 
 const App = () => {
+  const [tasks, setTasks] = useState<TaskType[]>([]);
   return (
     <ScrollView>
-      <Navbar />
-      <InputBlock />
+      <Navbar title={'Todolist app'} />
+      <InputBlock setTasks={setTasks} tasks={tasks} />
+      <Tasks tasks={tasks} />
     </ScrollView>
   );
 };

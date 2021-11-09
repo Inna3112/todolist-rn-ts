@@ -1,10 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-export const Navbar = () => {
+type PropsType = {
+  title: string;
+};
+export const Navbar: React.FC<PropsType> = ({title}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Todolist app</Text>
+      <Text style={styles.text}>{title}</Text>
     </View>
   );
 };

@@ -1,11 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, StyleSheet, TextInput, View} from 'react-native';
+import {TaskType} from './Tasks';
 
-export const InputBlock = () => {
+type PropsType = {
+  tasks: TaskType[];
+  setTasks: (tasks: TaskType[]) => void;
+};
+
+export const InputBlock: React.FC<PropsType> = ({setTasks, tasks}) => {
+  const [title, setTitle] = useState('');
+  const addTask = () => {
+    const newTask = {
+      id: Date.now().toString(),
+      title,
+    };
+    setTasks([newTask, ...tasks]);
+    setTitle('');
+  };
   return (
     <View style={styles.container}>
-      <TextInput style={styles.input} placeholder="Enter your task" />
-      <Button title={'+'} />
+      <TextInput
+        style={styles.input}
+        placeholder="Enter your task"
+        defaultValue={title}
+        onChangeText={setTitle}
+      />
+      <Button title={'+'} onPress={addTask} />
     </View>
   );
 };
@@ -19,7 +39,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    width: 360,
+    width: '90%',
     borderBottomColor: 'black',
     borderBottomWidth: 1,
   },
