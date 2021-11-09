@@ -3,14 +3,14 @@ import {StyleSheet, Text, View} from 'react-native';
 
 export const Navbar = () => {
   return (
-    <View style={styles.containter}>
+    <View style={styles.container}>
       <Text style={styles.text}>Todolist app</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  containter: {
+  container: {
     height: 70,
     backgroundColor: 'blue',
     alignItems: 'center',

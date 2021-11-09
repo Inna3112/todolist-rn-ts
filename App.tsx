@@ -10,9 +10,16 @@
 
 import React from 'react';
 import {Navbar} from './src/Navbar';
+import {ScrollView} from 'react-native';
+import {InputBlock} from './src/InputBlock';
 
 const App = () => {
-  return <Navbar />;
+  return (
+    <ScrollView>
+      <Navbar />
+      <InputBlock />
+    </ScrollView>
+  );
 };
 
 export default App;
