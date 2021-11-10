@@ -19,11 +19,15 @@ const App = () => {
   const addTask = (newTask: TaskType) => {
     setTasks(prevTask => [newTask, ...prevTask]);
   };
+  const removeTask = (id: string) => {
+    const newTasks = tasks.filter(task => task.id !== id);
+    setTasks(newTasks);
+  };
   return (
     <View>
       <Navbar title={'Todolist app'} />
       <InputBlock addTask={addTask} />
-      <Tasks tasks={tasks} setTasks={setTasks} />
+      <Tasks tasks={tasks} removeTask={removeTask} />
     </View>
   );
 };

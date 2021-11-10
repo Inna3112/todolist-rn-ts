@@ -4,17 +4,15 @@ import {Task} from './Task';
 
 type PropsType = {
   tasks: TaskType[];
-  setTasks: (tasks: TaskType[]) => void;
+  removeTask: (id: string) => void;
 };
-export const Tasks: React.FC<PropsType> = ({tasks, setTasks}) => {
+export const Tasks: React.FC<PropsType> = ({tasks, removeTask}) => {
   return (
     <FlatList
       style={styles.container}
       keyExtractor={item => item.id}
       data={tasks}
-      renderItem={({item}) => (
-        <Task task={item} setTasks={setTasks} tasks={tasks} />
-      )}
+      renderItem={({item}) => <Task task={item} removeTask={removeTask} />}
     />
     // <View style={styles.container}>
     //   {tasks.map(task => (

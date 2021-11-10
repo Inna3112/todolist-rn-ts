@@ -4,16 +4,14 @@ import {TaskType} from './Tasks';
 
 type PropsType = {
   task: TaskType;
-  setTasks: (tasks: TaskType[]) => void;
-  tasks: TaskType[];
+  removeTask: (id: string) => void;
 };
-export const Task: React.FC<PropsType> = ({task, setTasks, tasks}) => {
-  const removeTask = () => {
-    const newTasks = tasks.filter(t => t.id !== task.id);
-    setTasks(newTasks);
+export const Task: React.FC<PropsType> = ({task, removeTask}) => {
+  const removeTaskHandler = () => {
+    removeTask(task.id);
   };
   return (
-    <TouchableOpacity onPress={removeTask} activeOpacity={0.5}>
+    <TouchableOpacity onPress={removeTaskHandler} activeOpacity={0.5}>
       <View style={styles.task} key={+task.id}>
         <Text>{task.title}</Text>
       </View>
