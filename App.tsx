@@ -16,10 +16,13 @@ import {Tasks, TaskType} from './src/Tasks/Tasks';
 
 const App = () => {
   const [tasks, setTasks] = useState<TaskType[]>([]);
+  const addTask = (newTask: TaskType) => {
+    setTasks(prevTask => [newTask, ...prevTask]);
+  };
   return (
     <View>
       <Navbar title={'Todolist app'} />
-      <InputBlock setTasks={setTasks} tasks={tasks} />
+      <InputBlock addTask={addTask} />
       <Tasks tasks={tasks} setTasks={setTasks} />
     </View>
   );

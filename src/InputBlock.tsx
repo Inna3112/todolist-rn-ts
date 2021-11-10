@@ -3,19 +3,18 @@ import {Button, StyleSheet, TextInput, View, Alert} from 'react-native';
 import {TaskType} from './Tasks/Tasks';
 
 type PropsType = {
-  tasks: TaskType[];
-  setTasks: (tasks: TaskType[]) => void;
+  addTask: (newTask: TaskType) => void;
 };
 
-export const InputBlock: React.FC<PropsType> = ({setTasks, tasks}) => {
+export const InputBlock: React.FC<PropsType> = ({addTask}) => {
   const [title, setTitle] = useState('');
-  const addTask = () => {
+  const addTaskHandler = () => {
     const newTask = {
       id: Date.now().toString(),
       title,
     };
     if (title.trim()) {
-      setTasks([newTask, ...tasks]);
+      addTask(newTask);
       setTitle('');
     } else {
       Alert.alert('Enter your task!');
@@ -32,7 +31,7 @@ export const InputBlock: React.FC<PropsType> = ({setTasks, tasks}) => {
         autoCapitalize={'characters'}
         autoFocus={true}
       />
-      <Button title={'+'} onPress={addTask} />
+      <Button title={'+'} onPress={addTaskHandler} />
     </View>
   );
 };
