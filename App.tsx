@@ -20,7 +20,7 @@ const App = () => {
     <View>
       <Navbar title={'Todolist app'} />
       <InputBlock setTasks={setTasks} tasks={tasks} />
-      <Tasks tasks={tasks} />
+      <Tasks tasks={tasks} setTasks={setTasks} />
     </View>
   );
 };
