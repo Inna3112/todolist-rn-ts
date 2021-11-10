@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button, StyleSheet, TextInput, View} from 'react-native';
+import {Button, StyleSheet, TextInput, View, Alert} from 'react-native';
 import {TaskType} from './Tasks/Tasks';
 
 type PropsType = {
@@ -14,16 +14,23 @@ export const InputBlock: React.FC<PropsType> = ({setTasks, tasks}) => {
       id: Date.now().toString(),
       title,
     };
-    setTasks([newTask, ...tasks]);
-    setTitle('');
+    if (title.trim()) {
+      setTasks([newTask, ...tasks]);
+      setTitle('');
+    } else {
+      Alert.alert('Enter your task!');
+    }
   };
   return (
     <View style={styles.container}>
       <TextInput
         style={styles.input}
         placeholder="Enter your task"
-        defaultValue={title}
+        value={title}
         onChangeText={setTitle}
+        autoCorrect={true}
+        autoCapitalize={'characters'}
+        autoFocus={true}
       />
       <Button title={'+'} onPress={addTask} />
     </View>
