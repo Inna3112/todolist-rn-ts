@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button, StyleSheet, TextInput, View} from 'react-native';
-import {TaskType} from './Tasks';
+import {TaskType} from './Tasks/Tasks';
 
 type PropsType = {
   tasks: TaskType[];

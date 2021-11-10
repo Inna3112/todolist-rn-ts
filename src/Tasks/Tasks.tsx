@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {Task} from './Task';
 
 type PropsType = {
   tasks: TaskType[];
@@ -8,9 +9,7 @@ export const Tasks: React.FC<PropsType> = ({tasks}) => {
   return (
     <View style={styles.container}>
       {tasks.map(task => (
-        <View style={styles.task}>
-          <Text>{task.title}</Text>
-        </View>
+        <Task key={+task.id} title={task.title} id={task.id} />
       ))}
     </View>
   );
@@ -24,6 +23,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
     marginBottom: 2,
     padding: 4,
+    borderRadius: 5,
   },
 });
 
