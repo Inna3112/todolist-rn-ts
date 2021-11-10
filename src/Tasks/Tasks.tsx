@@ -13,12 +13,7 @@ export const Tasks: React.FC<PropsType> = ({tasks, setTasks}) => {
       keyExtractor={item => item.id}
       data={tasks}
       renderItem={({item}) => (
-        <Task
-          title={item.title}
-          id={item.id}
-          setTasks={setTasks}
-          tasks={tasks}
-        />
+        <Task task={item} setTasks={setTasks} tasks={tasks} />
       )}
     />
     // <View style={styles.container}>
